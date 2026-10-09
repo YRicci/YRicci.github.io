@@ -1,0 +1,384 @@
+:root {
+  --paper: #eef2f1;
+  --ink: #12262e;
+  --muted: #4c6068;
+  --line: #c3d0cf;
+  --link: #0b6068;
+  --marker: #f4c21b;
+  --marker-ink: #2b2200;
+  --display: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  --text: "Public Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f1d22;
+    --ink: #e7efed;
+    --muted: #9fb2b5;
+    --line: #27393f;
+    --link: #66c7ce;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 1.0625rem/1.6 var(--text);
+}
+
+.wrap {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+a {
+  color: var(--link);
+  text-underline-offset: 0.2em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--link);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  padding: 0.5rem 0.9rem;
+  background: var(--ink);
+  color: var(--paper);
+  z-index: 10;
+}
+
+.skip:focus {
+  top: 1rem;
+}
+
+/* Topo */
+.hero {
+  padding: 4.5rem 0 3rem;
+  border-bottom: 1px solid var(--line);
+}
+
+h1 {
+  margin: 0;
+  font: 700 clamp(2.75rem, 9vw, 5.5rem) / 0.98 var(--display);
+  letter-spacing: -0.03em;
+}
+
+h1 .rest {
+  display: block;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.lead {
+  max-width: 36rem;
+  margin: 1.75rem 0 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.contacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.where {
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
+.copy {
+  margin-left: 0.5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.copy-status {
+  margin-left: 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* Seções: o título fica na margem, como o nome do campo numa ficha */
+.sec {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 1rem 3rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.sec h2 {
+  margin: 0;
+  font: 700 1.125rem/1.3 var(--display);
+}
+
+.body {
+  max-width: 40rem;
+}
+
+.body p {
+  margin: 0 0 1rem;
+}
+
+.body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Competências */
+.skills {
+  margin: 0;
+}
+
+.skills div {
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 0.25rem 1rem;
+  padding: 0.7rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.skills div:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.skills dt {
+  font-weight: 600;
+}
+
+.skills dd {
+  margin: 0;
+}
+
+/* Projeto: etapas marcadas como evidências numeradas */
+.project-title {
+  margin: 0 0 0.6rem;
+  font: 700 1.25rem/1.3 var(--display);
+}
+
+.pipeline {
+  margin-top: 1.5rem;
+}
+
+.tabs {
+  display: none;
+}
+
+.js .tabs {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+}
+
+.track {
+  position: absolute;
+  left: 2.5rem;
+  right: 2.5rem;
+  top: calc(1.625rem - 1px);
+  height: 2px;
+  background: var(--line);
+}
+
+.track-fill {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--ink);
+  transition: width 0.35s ease;
+}
+
+.tab {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  justify-items: center;
+  gap: 0.5rem;
+  width: 5rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.tent {
+  display: grid;
+  place-items: end center;
+  width: 3.25rem;
+  height: 3.25rem;
+  padding-bottom: 0.45rem;
+  background: var(--line);
+  color: var(--muted);
+  font: 700 1.15rem/1 var(--display);
+  clip-path: polygon(18% 0, 82% 0, 100% 100%, 0 100%);
+}
+
+.tab.done .tent,
+.tab[aria-selected="true"] .tent {
+  background: var(--marker);
+  color: var(--marker-ink);
+}
+
+.tab[aria-selected="true"] {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+}
+
+.panel {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 2px solid var(--ink);
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panel h4 {
+  margin: 0 0 0.35rem;
+  font: 700 1.125rem/1.3 var(--display);
+}
+
+.panel p {
+  margin: 0;
+}
+
+/* Experiência e formação */
+.entry + .entry {
+  margin-top: 1.5rem;
+}
+
+.entry h3 {
+  margin: 0;
+  font: 700 1.125rem/1.35 var(--display);
+}
+
+.entry .meta {
+  margin: 0.15rem 0 0.75rem;
+  color: var(--muted);
+}
+
+.entry ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.entry li + li {
+  margin-top: 0.3rem;
+}
+
+.foot {
+  padding-top: 2rem;
+  padding-bottom: 3rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.foot p {
+  margin: 0;
+}
+
+@media (max-width: 44rem) {
+  .hero {
+    padding: 3rem 0 2.25rem;
+  }
+
+  .sec {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 2rem 0;
+  }
+
+  .skills div {
+    grid-template-columns: 1fr;
+  }
+
+  .tab {
+    width: 4.25rem;
+    font-size: 0.85rem;
+  }
+
+  .track {
+    left: 2.125rem;
+    right: 2.125rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track-fill {
+    transition: none;
+  }
+}
+
+/* Ao imprimir ou salvar em PDF, mostra todas as etapas e esconde os controles */
+@media print {
+  :root {
+    --paper: #fff;
+    --ink: #000;
+    --muted: #333;
+    --line: #bbb;
+    --link: #000;
+  }
+
+  body {
+    font-size: 10.5pt;
+  }
+
+  .skip,
+  .tabs,
+  .copy,
+  .copy-status,
+  .foot {
+    display: none !important;
+  }
+
+  .panel[hidden] {
+    display: block;
+  }
+
+  .hero {
+    padding: 0 0 1rem;
+  }
+
+  .sec {
+    padding: 1rem 0;
+    break-inside: avoid;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
